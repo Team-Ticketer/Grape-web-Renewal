@@ -1,0 +1,112 @@
+.payment{
+    &--upper--title {
+        text-align: center;
+        font-family: 'VT323', monospace;
+        color: #6b10af;
+        font-size: 60px;
+        margin-top: 3vh;
+    }
+
+    &--wrapper {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10vh;
+        flex-direction: column;
+
+        &--inner {
+            display: flex;
+            width: 50%;
+            height: 35vh;
+            padding: 30px 30px 30px 30px;  border-radius: 19px;
+            box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.16);
+            background-color: #ffffff;
+            flex-direction: column;
+        }
+    }
+
+    &--title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 20%;
+        font-family: 'VT323', monospace;
+        color: #3d3d3d;
+        font-size: 40px;
+    }
+
+    &--execute {
+        &--wrapper {
+            display: flex;
+            margin-top: 3vh;
+            height: 30%;
+            flex-direction: column;
+            justify-content: space-between;
+            border-bottom: 2px solid  #3d3d3d;
+        }
+        &--row {
+            display: flex;
+            justify-content: space-between;
+            height: 48%;
+            &--left {
+                font-family: 'VT323', monospace;
+                color: #3d3d3d;
+                font-size: 35px;
+            }
+
+            &--right {
+                display: flex;
+                justify-content: flex-end;
+                font-family: 'VT323', monospace;
+                color: #3d3d3d;
+                font-size: 35px;
+            }
+
+            &--klay {
+                color: #6b10af;
+                margin-right: 1vw;
+            }
+        }
+
+        &d {
+            &--wrapper {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                margin-top: 2vh;
+            }
+
+            &--left {
+                font-family: 'VT323', monospace;
+                color: #3d3d3d;
+                font-size: 45px;
+            }
+
+            &--right {
+                display: flex;
+                justify-content: flex-end;
+                font-family: 'VT323', monospace;
+                color: #3d3d3d;
+                font-size: 45px;
+            }
+
+            &--klay {
+                color: #6b10af;
+                margin-right: 1vw;
+            }
+        }
+    }
+    &--submit {
+        width: 20%;
+        font-family: 'VT323', monospace;
+        color: white;
+        font-size: 50px;
+        background-color: #6b10af;
+        border: none;
+        border-radius: 8px;
+        height: 6vh;
+        margin-top: 4vh;
+    }
+}

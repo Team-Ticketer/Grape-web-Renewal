@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import BlockNumber from 'components/BlockNumber'
 import Auth from 'components/Auth'
 
-import * as walletActions from 'actions/wallet'
+import * as walletActions from 'actions/wallet';
+import MainContainer from './container/MainContainer';
 
 import './App.scss'
 
@@ -28,6 +29,7 @@ class App extends Component<Props> {
       <div className="App">
         <BlockNumber />
         <Auth />
+        <MainContainer />
         {this.props.children}
       </div>
     )

@@ -1,0 +1,186 @@
+p {
+    margin: 0;
+}
+.main{
+    &--wrapper {
+        display: flex;
+        width: 100%;
+        height: 93vh;
+        justify-content: center;
+        align-items: center;
+        font-family: 'VT323', monospace;
+        flex-direction: column;
+    }
+
+    &--background-img {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+    }
+
+    &--title {
+        font-size: 80px;
+        margin-bottom: 60px;
+        &--underbar {
+            text-decoration: underline;
+            letter-spacing: 8px;
+        }
+    }
+    
+    &--ticket {
+        &--wrapper {
+            display: flex;
+            width: 70%;
+            height: 50%;
+            background-color: white;
+            justify-content: space-between;
+        }
+
+        &--input {
+            display: flex;
+            flex-direction: column;
+            width: 75%;
+            align-items: center;
+        }
+
+        &--date {
+            float: right;
+            margin-right: 4%;
+            letter-spacing: 0px;
+        }
+
+        &--title {
+            letter-spacing: 15px;
+            font-size: 40px;
+            width: 100%;
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        
+        &--name {
+            &--wrapper {
+                display: flex;
+                width: 95%;
+                height: 38%;
+                border: 2px solid black;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            &--form {
+                display: flex;
+                border: 2px solid black;
+                width: 80%;
+                height: 90%;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            &--empty {
+                display: inline-block;
+                width: 8%;
+                height: 90%;
+                border: 2px solid black;
+            }
+
+            &--input {
+                width: 90%;
+                height: 45px;
+                font-size: 35px;
+                border: none;
+                font-family: 'VT323', monospace;
+                padding: 2px 4px 2px 4px;
+                border-bottom: 1px solid black;
+            }
+        }
+        
+        &--form {
+            &--wrapper {
+                display: flex;
+                width: calc(95% + 4px);
+                height: 33%;
+                margin-top: 1%;
+                justify-content: space-between;
+            }
+
+            &--box {
+                display: flex;
+                width: 31.5%;
+                height: 100%;
+                border: 2px solid black;
+                justify-content: center;
+                align-items: center;
+                
+                &--inner {
+                    display: flex;
+                    width: 96%;
+                    height: 93%;
+                    border: 1px solid black;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+
+            &--input {
+                width: 80%;
+                height: 30px;
+                font-size: 25px;
+                border: none;
+                font-family: 'VT323', monospace;
+                padding: 2px 4px 2px 4px;
+                border-bottom: 1px solid black;
+            }
+        }
+
+        &--submit {
+            display: flex;
+            width: 25%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+
+            &--box {
+                display: flex;
+                width: 80%;
+                height: 80%;
+                border: 2px solid black;
+                justify-content: center;
+                align-items: center;
+
+                &--inner {
+                    display: flex;
+                    width: 95%;
+                    height: 97%;
+                    border: 1px solid black;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    align-items: center;
+                }
+            }
+            
+            &--empty {
+                display: inline-block;
+                width: 80%;
+                height: 20%;
+                border: 1px solid black;
+            }
+            
+            &--button {
+                display: flex;
+                width: calc(80% + 2px);
+                height: 50%;
+                background-color: black;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+
+                &--img {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+        }   
+    }
+}
