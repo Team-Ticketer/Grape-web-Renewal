@@ -1,0 +1,41 @@
+.checkKlay{
+  width: 964px;
+  padding-top: 30px;
+  margin: 0px auto;
+  &__title{
+    margin-top: 30px;
+    font-family: VT323;
+    font-size: 54px;
+    color: #3d3d3d;
+  }
+  &__valueBox {
+    position: relative;
+    margin-top: 20px;
+    width: 964px;
+    height: 160px;
+    border-radius: 11px;
+    border: solid 3px #6b10af;
+    &__img{
+      display: inline-block;
+      margin: 39px 15px;
+      width: 212px;
+      height: 82px;
+    }
+    &__value {
+      position: absolute;
+      right: 20px;
+      display: inline-block;
+      font-family: 'VT323';
+      font-size: 54px;
+      line-height: 160px;
+      text-align: right;
+      color: #6b10af;
+    }
+    &__error{
+      position: absolute;
+      right: 20px;
+      bottom: 10px;
+      font-size: 12px;
+    }
+  }
+}
