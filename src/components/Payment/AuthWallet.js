@@ -4,7 +4,7 @@ import QRcode from 'qrcode-react';
 import { cav } from 'klaytn/caver';
 import './css/AuthWallet.scss';
 
-import { integrateWallet, removeWallet} from 'actions/wallet';
+import { integrateWallet, removeWallet } from './actions/wallet';
 
 @connect((state) => ({
   walletInstance: state.wallet.walletInstance,
