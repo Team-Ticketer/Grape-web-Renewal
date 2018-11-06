@@ -9,12 +9,8 @@ import MainContainer from './container/MainContainer';
 
 import './App.scss'
 
-type Props = {
-  children: React.DOM,
-  wallet: object,
-}
 
-class App extends Component<Props> {
+class App extends Component {
   componentWillMount() {
     const { walletInstance, loadWallet } = this.props
     const walletFromSession = sessionStorage.getItem('walletInstance')
@@ -28,7 +24,6 @@ class App extends Component<Props> {
     return (
       <div className="App">
         <BlockNumber />
-        <Auth />
         <MainContainer />
         {this.props.children}
       </div>

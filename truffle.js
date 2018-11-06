@@ -3,8 +3,8 @@ const Caver = require('caver-js')
 /**
  * truffle network variables
  */
-const FROM = 'PUT YOUR ADDRESS(DEPLOYER ADDRESS)'
-const HOST = 'localhost'
+const FROM = ''
+const HOST = 'http://ec2-13-125-213-220.ap-northeast-2.compute.amazonaws.com'
 const PORT = '8551'
 const URL = `${HOST}:${PORT}`
 const NETWORK_ID = '1000'

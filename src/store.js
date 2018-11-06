@@ -14,8 +14,4 @@ const store = createStore(
   composeEnhancers(applyMiddleware(thunkMiddleware, routingMiddleware))
 )
 
-if (DEV) {
-  window.store = store
-}
-
 export default store
