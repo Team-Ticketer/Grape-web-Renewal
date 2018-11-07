@@ -1,0 +1,30 @@
+.LoginContent{
+  position: relative;
+  width: 675px;
+  height: 100%;
+  box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: rgba($color: #000000, $alpha: 0.8);
+  margin: 0 auto;
+  &__wrapper{
+    position: absolute;
+    top: calc(50% - 90px);
+    left: calc(347px - 245px);
+    font-family: VT323;
+    font-size: 70px;
+    line-height: 1.2;
+    color: #ffffff;
+    &__btn{
+      cursor: pointer;
+      margin-top: 40px;
+      width: 490px;
+      height: 66px;
+      border-radius: 5px;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      background-color: #fcd411;
+      font-size: 33px;
+      line-height: 66px;
+      text-align: center;
+      color: #2e2e30;
+    }
+  }
+}

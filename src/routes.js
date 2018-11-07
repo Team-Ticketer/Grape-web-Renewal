@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { Main } from './container/index';
+import { Main , Login } from './container/index';
 
 import store from './store'
 
@@ -11,7 +11,8 @@ const renderRoutes = RootComponent => (
     <BrowserRouter>
       <Switch>
         <RootComponent>
-          <Route path='/' compoent={Main} exact/>
+          <Route path='/' component={Main} exact/>
+          <Route path='/login' component={Login} exact/>
         </RootComponent>
       </Switch>
     </BrowserRouter>
