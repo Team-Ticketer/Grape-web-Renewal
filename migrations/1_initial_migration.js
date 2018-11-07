@@ -1,5 +1,5 @@
 const Migrations = artifacts.require('./Migrations.sol')
-const ExampleContract = artifacts.require('./ExampleContract.sol')
+const ExampleContract = artifacts.require('./Grape.sol')
 const fs = require('fs')
 
 module.exports = function (deployer) {
