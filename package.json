@@ -19,6 +19,7 @@
   "author": "nujabes403",
   "license": "GPL-3.0",
   "dependencies": {
+    "axios": "^0.18.0",
     "bignumber.js": "^7.2.1",
     "caver-js": "0.0.1-b",
     "classnames": "^2.2.5",

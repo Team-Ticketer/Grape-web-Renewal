@@ -1,6 +1,6 @@
 .search
 {
-    &--wrapper {
+    &__wrapper {
         position: sticky;
         display: flex;
         width: 40vw;
@@ -15,7 +15,7 @@
         justify-content: space-between;
     }
 
-    &--form {
+    &__form {
         display: flex;
         width: 89%;
         height: 100%;
@@ -23,10 +23,10 @@
         justify-content: space-between;
     }
 
-    &--btn {
+    &__btn {
         width: 28%;
         height: 28%;
-        &--wrapper {
+        &__wrapper {
             display: flex;
             width: 10%;
             height: 100%;
@@ -37,7 +37,7 @@
         }
     }
 
-    &--input {
+    &__input {
         width: 100%;
         height: 47%;
         padding-left: 10px;
@@ -47,14 +47,14 @@
         font-size: 20px;
     }
 
-    &--form--bottom {
+    &__form__bottom {
         display: flex;
         width: 100%;
         justify-content: space-between;
         height: 47%;
     }
 
-    &--input--bottom {
+    &__input__bottom {
         width: 33%;
         padding-left: 10px;
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
