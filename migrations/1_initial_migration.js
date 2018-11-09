@@ -1,9 +1,7 @@
-const Migrations = artifacts.require('./Migrations.sol')
 const ExampleContract = artifacts.require('./Grape.sol')
 const fs = require('fs')
 
 module.exports = function (deployer) {
-  deployer.deploy(Migrations)
   deployer.deploy(ExampleContract).then(() => {
     // Record recently deployed contract address to 'deployedAddress' file.
     if (ExampleContract._json) {
