@@ -1,0 +1,88 @@
+.detail{
+    &__buy__top__bar {
+        display: flex;
+        width: 100%;
+        height: 7vh;
+        position: fixed;
+        top: 0;
+        z-index:1;
+        box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.16);
+        background-color: white;
+        justify-content: center;
+        align-items: center;
+
+        &__inner {
+            display: flex;
+            width: 70%;
+            height: 70%;
+            justify-content: space-between;
+        }
+
+        &__title {
+            font-size: 50px;
+            font-family: 'VT323', monospace;
+            color: #9d3aff;
+        }
+    }
+
+    &__concert {
+        &__title {
+            padding: 5px 10px 5px 10px;
+            font-family: 'VT323', monospace;
+            font-size: 90px;
+            color: white;
+            background-color: #3d3d3d;
+
+            &__wrapper {
+                display: flex;
+                width: 70vw;
+                height: 60vh;
+                margin-top: 3%;
+                justify-content: center;
+            }
+        }
+
+        &__info__wrapper {
+            display: flex;
+            width: 100%;
+            height: 80%;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        &__place__date >  span {
+            font-size: 35px;
+            padding: 0 10px 0 10px;
+            font-family: 'VT323', monospace;
+            color: white;
+            background-color: #4a4a4a;
+        }
+
+        &__artist {
+            padding: 5px 10px 5px 10px;
+            font-family: 'VT323', monospace;
+            font-size: 35px;
+            color: white;
+            background-color: #3d3d3d;
+        }
+
+        &__buy__btn {
+            float: right;
+            width: 30%;
+            font-family: 'VT323', monospace;
+            font-size: 40px;
+            border-radius: 11px;
+            box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+            background-color: #9d3aff;
+            border: none;
+            padding: 8px 0px 8px 0px;
+            color: white;
+            cursor: pointer;
+        }
+    }
+}
+
+
+.display--none {
+    display: none;
+}

@@ -1,0 +1,53 @@
+.detail__concert {
+    &__wrapper {
+        display: flex;
+        width: 70vw;
+        justify-content: space-around;
+        background-color: white;
+        padding: 20px 20px 20px 20px;
+        border-radius: 7px;
+    }
+
+    &__inner__wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 48%;
+    }
+    
+    &__text {
+        font-size: 25px;
+        font-family: 'VT323', 'nanumsquareround';
+        letter-spacing: 1px;
+        line-height: 1.5;
+        & h1 {
+            line-height: 1;
+            font-size: 50px;
+        }
+    }
+
+    &__place {
+        width: 100%;
+        height: 300px;
+        position: relative;
+        margin-top: 10%;
+    }
+
+    &__youtube {
+        width: 100%;
+        height: 40vh;
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.63);
+    }
+
+    &__transfer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-top: 1px solid black;
+
+        &__> span {
+            font-size: 1rem;
+        }
+    }
+}
