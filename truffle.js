@@ -3,8 +3,8 @@ const Caver = require('caver-js')
 /**
  * truffle network variables
  */
-const FROM = ''
-const HOST = 'http://ec2-13-125-213-220.ap-northeast-2.compute.amazonaws.com'
+const FROM = '0x50e2CeB9B439b7CE7B346BE2Cae87a8B38B98e9B'
+const HOST = '104.198.3.162'
 const PORT = '8551'
 const URL = `${HOST}:${PORT}`
 const NETWORK_ID = '1000'
