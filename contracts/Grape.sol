@@ -15,12 +15,39 @@ contract Grape {
         _;
     }
 
+    function checkStartSaleTime (uint256 _saleStartTime)
+    public view returns (bool _isBeforeSaleTime) {
+        if (_saleStartTime != 0) {
+            if (_saleStartTime >= block.timestamp) {
+                return true;
+            }
+        } else {
+            return true;
+        }
+        return false;
+    }
+
+    function checkEndSaleTime (uint256 _saleEndTime)
+    public view returns(bool _isAfterSaleTime) {
+        if (_saleEndTime > block.timestamp) {
+            return true;
+        }
+        return false;
+    }
+
+    function canOnlySaleWithinSaleTime (uint256 _saleStartTime, uint256 _saleEndTime)
+    public view returns (bool isCorrectRequest) {
+        require(checkStartSaleTime(_saleStartTime), "Befoe SaleTime");
+        require(checkEndSaleTime(_saleEndTime), "End SaleTime");
+        return true;
+    }
+
     struct Concert {
         uint256 concertId;
         address creator;
-        uint256 ticketTypeCounts;
         uint256 saleStartTime;
         uint256 saleEndTime;
+        uint256 ticketTypeCounts;
         string[] ticketName;
         uint256[] ticketPrice;
         string[] ticketDescription;
@@ -103,9 +130,9 @@ contract Grape {
     mapping (uint256 => TicketBuyer) ticketBuyerList;
 
     function createConcert(
-        uint256 _ticketTypeCounts,
         uint256 _saleStartTime,
         uint256 _saleEndTime,
+        uint256 _ticketTypeCounts,
         string[] _ticketName,
         uint256[] _ticketPrice,
         string[] _ticketDescription,
@@ -119,9 +146,9 @@ contract Grape {
             Concert(
                 concertCount,
                 msg.sender,
-                _ticketTypeCounts,
                 _saleStartTime,
                 _saleEndTime,
+                _ticketTypeCounts,
                 _ticketName,
                 _ticketPrice,
                 _ticketDescription,
@@ -152,31 +179,49 @@ contract Grape {
             false,
             0
         );
+        _selectConcert.ticketListCount = _selectConcert.ticketListCount + 1;
+        _selectConcert.ticketAmount[_ticketType] = _selectConcert.ticketAmount[_ticketType] - 1;
     }
 
-    function checkStartSaleTime (uint256 _saleStartTime)
-    public view returns (bool _isBeforeSaleTime) {
-        if (_saleStartTime != 0) {
-            if (_saleStartTime >= block.timestamp) {
-                return true;
+    function viewConcert(uint256 concertId) public view returns (
+        uint256 _ticketTypeCounts,
+        uint256 _ticketHighPrice,
+        uint256 _ticketLowPrice,
+        uint256 _ticketAmount
+    ) {
+        Concert selectConcert = concertList[concertId];
+        uint256 tempHighPrice = selectConcert.ticketPrice[0];
+        uint256 tempLowPrice = selectConcert.ticketPrice[0];
+        uint256 tempAmount = 0;
+        if (selectConcert.ticketTypeCounts != 0) {
+            for (uint i = 0; i < selectConcert.ticketTypeCounts; i++) {
+                if (tempHighPrice < selectConcert.ticketPrice[i]) {
+                    tempHighPrice = selectConcert.ticketPrice[i];
+                }
+                if (tempLowPrice > selectConcert.ticketPrice[i]) {
+                    tempLowPrice = selectConcert.ticketPrice[i];
+                }
+                tempAmount = tempAmount+selectConcert.ticketAmount[i];
             }
-        } else {
-            return true;
         }
-        return false;
+        _ticketTypeCounts = selectConcert.ticketTypeCounts;
+        _ticketHighPrice = tempHighPrice;
+        _ticketLowPrice = tempLowPrice;
+        _ticketAmount = tempAmount;
     }
 
-    function checkEndSaleTime (uint256 _saleEndTime)
-    public view returns(bool _isAfterSaleTime) {
-        if (_saleEndTime > block.timestamp) {
-            return true;
-        }
-        return false;
-    }
-
-    function canOnlySaleWithinSaleTime (uint256 _saleStartTime, uint256 _saleEndTime) public view returns (bool isCorrectRequest) {
-        require(checkStartSaleTime(_saleStartTime), "Befoe SaleTime");
-        require(checkEndSaleTime(_saleEndTime), "End SaleTime");
-        return true;
+    function viewConcertTicketType(uint256 concertId, uint256 ticketType) public view returns (
+        string _ticketName,
+        uint256 _ticketPrice,
+        string _ticketDescription,
+        uint256 _ticketAmount,
+        bool _isTransferable
+    ) {
+        Concert selectConcert = concertList[concertId];
+        _ticketName = selectConcert.ticketName[ticketType];
+        _ticketPrice = selectConcert.ticketPrice[ticketType];
+        _ticketDescription = selectConcert.ticketDescription[ticketType];
+        _ticketAmount = selectConcert.ticketAmount[ticketType];
+        _isTransferable = selectConcert.isTransferable[ticketType];
     }
 }
