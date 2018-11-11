@@ -7,3 +7,8 @@
   position: relative;
   font-family: 'VT323';
 }
+
+::-webkit-scrollbar {
+  width: 0px;  /* remove scrollbar space */
+  background: transparent;  /* optional: just make scrollbar invisible */
+}

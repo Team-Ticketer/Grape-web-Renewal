@@ -8,7 +8,7 @@ p {
         height: 1300px;
         justify-content: center;
         align-items: center;
-        font-family: 'VT323', 'NanumSquareR', monospace;
+        font-family: 'VT323', 'nanumsquareround';
         flex-direction: column;
     }
 
@@ -20,7 +20,7 @@ p {
     }
 
     &__title {
-        font-size: 80px;
+        font-size: 5.3vw;
         margin-bottom: 60px;
         
         &__underbar {
@@ -52,7 +52,7 @@ p {
         
         &__title {
             letter-spacing: 15px;
-            font-size: 40px;
+            font-size: 2vw;
             width: 100%;
             text-align: center;
             margin-top: 15px;
@@ -63,9 +63,9 @@ p {
             &__input {
                 width: 90%;
                 height: 45px;
-                font-size: 35px;
+                font-size: 1.8vw;
                 border: none;
-                font-family: 'VT323', 'NanumSquareR', monospace;
+                font-family: 'VT323', 'nanumsquareround';
                 padding: 2px 4px 2px 4px;
                 border-bottom: 1px solid black;
             }
@@ -127,9 +127,9 @@ p {
             &__input {
                 width: 80%;
                 height: 30px;
-                font-size: 25px;
+                font-size: 1.2vw;
                 border: none;
-                font-family: 'VT323', 'NanumSquareR', monospace;
+                font-family: 'VT323', 'nanumsquareround';
                 padding: 2px 4px 2px 4px;
                 border-bottom: 1px solid black;
             }

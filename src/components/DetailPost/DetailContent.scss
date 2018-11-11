@@ -16,13 +16,13 @@
     }
     
     &__text {
-        font-size: 25px;
+        font-size: 1.8vw;
         font-family: 'VT323', 'nanumsquareround';
         letter-spacing: 1px;
         line-height: 1.5;
         & h1 {
             line-height: 1;
-            font-size: 50px;
+            font-size: 3vw;
         }
     }
 
@@ -38,16 +38,8 @@
         height: 40vh;
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.63);
     }
+}
 
-    &__transfer {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border-top: 1px solid black;
-
-        &__> span {
-            font-size: 1rem;
-        }
-    }
+pre {
+    white-space: pre-wrap;
 }

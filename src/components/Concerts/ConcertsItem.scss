@@ -9,6 +9,7 @@
     box-shadow: 0px 5px 10px rgba(200,200,200, 0.5);
     
     page-break-inside: avoid;
+    border-radius: 10px;
 
     &__img {
       width: 100%;
@@ -19,7 +20,7 @@
     &__content{
         &__wrapper {
             width: 100%;
-            height: 99%;
+            height: 100%;
             opacity: 0;
             position: absolute;
             display: flex;
@@ -42,19 +43,19 @@
         }
         &__title {
             text-align: center;
-            font-family: 'VT323', monospace;
+            font-family: 'VT323', 'nanumsquareround';
             color: white;
             width: 100%;
-            font-size: 40px;
+            font-size: 2vw;
         }
 
         &__date__space {
             display: flex;
-            font-family: 'VT323', monospace;
+            font-family: 'VT323', 'nanumsquareround';
             color: white;
             width: 100%;
             height: 40%;
-            font-size: 30px;
+            font-size: 1.6vw;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
@@ -62,10 +63,10 @@
         
         &__price {
             text-align: center;
-            font-family: 'VT323', monospace;
+            font-family: 'VT323', 'nanumsquareround';
             color: white;
             width: 100%;
-            font-size: 35px;
+            font-size: 1.8vw;
         }
 
         &__link {
@@ -73,13 +74,13 @@
             width: 100%;
             height: 15%;
             text-decoration: none;
-            font-family: 'VT323', monospace;
+            font-family: 'VT323', 'nanumsquareround';
             color: white;
             justify-content: center;
             align-items: center;
             border-radius: 7px;
             background-color: #6b10af;
-            font-size: 35px;
+            font-size: 1.8vw;
         }
     }
 }
