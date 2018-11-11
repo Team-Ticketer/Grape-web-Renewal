@@ -21,7 +21,7 @@
 
         &__title {
             font-size: 2.5vw;
-            font-family: 'VT323', monospace;
+            font-family: 'VT323', 'nanumsquareround';
             color: #9d3aff;
             line-height: 2.5vw;
         }
@@ -30,7 +30,7 @@
     &__concert {
         &__title {
             padding: 5px 10px 5px 10px;
-            font-family: 'VT323', monospace;
+            font-family: 'VT323', 'nanumsquareround';
             font-size: 4vw;
             color: white;
             background-color: #3d3d3d;
@@ -55,14 +55,14 @@
         &__place__date >  span {
             font-size: 2vw;
             padding: 0 10px 0 10px;
-            font-family: 'VT323', monospace;
+            font-family: 'VT323', 'nanumsquareround';
             color: white;
             background-color: #4a4a4a;
         }
 
         &__artist {
             padding: 5px 10px 5px 10px;
-            font-family: 'VT323', monospace;
+            font-family: 'VT323', 'nanumsquareround';
             font-size: 2.2vw;
             color: white;
             background-color: #3d3d3d;
@@ -71,7 +71,7 @@
         &__buy__btn {
             float: right;
             width: 30%;
-            font-family: 'VT323', monospace;
+            font-family: 'VT323', 'nanumsquareround';
             font-size: 2.3vw;
             border-radius: 11px;
             box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);

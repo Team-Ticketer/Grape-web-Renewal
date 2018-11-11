@@ -43,7 +43,7 @@
         padding-left: 10px;
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
         border: solid 3px #6b10af;
-        font-family: 'VT323', monospace;
+        font-family: 'VT323', 'nanumsquareround';
         font-size: 1vw;
     }
 
@@ -61,7 +61,7 @@
         border: solid 3px #6b10af;
 
         &::placeholder {
-            font-family: 'VT323', monospace;
+            font-family: 'VT323', 'nanumsquareround', monospace;
             font-size: 1vw;
         }
     }
