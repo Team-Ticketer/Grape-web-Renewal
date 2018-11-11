@@ -1,0 +1,38 @@
+.Navigation {
+  width: 100%;
+  height: 85px;
+  box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #ffffff;
+  position: absolute;
+  top: 0;
+  &__wrapper{
+    position: relative;
+    width: 1366px;
+    padding: 0 25px;
+    margin: 0 auto;
+    &__title{
+      display: inline-block;
+      font-family: 'VT323', 'NanumSquareR';
+      font-size: 51px;
+      line-height: 85px;
+      letter-spacing: 15px;
+      color: #6b10af;
+    }
+    &__btn{
+      cursor: pointer;
+      display: inline-block;
+      position: absolute;
+      right: 25px;
+      font-size: 32px;
+      line-height: 85px;
+      text-align: right;
+      color: #6b10af;
+      &__false {
+        font-family: 'NanumSquareR';
+      }
+      &__true {
+        font-family: 'VT323', 'NanumSquareR';
+      }
+    }
+  }
+}

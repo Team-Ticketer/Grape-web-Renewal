@@ -5,17 +5,17 @@ p {
     &__wrapper {
         display: flex;
         width: 100%;
-        height: 93vh;
+        height: 1300px;
         justify-content: center;
         align-items: center;
-        font-family: 'VT323', monospace;
+        font-family: 'VT323', 'NanumSquareR', monospace;
         flex-direction: column;
     }
 
     &__background__img {
         position: absolute;
-        width: 100vw;
-        height: 100vh;
+        left: 0;
+        height: 1300px;
         z-index: -1;
     }
 
@@ -31,7 +31,7 @@ p {
     &__ticket{
         &__wrapper {
             display: flex;
-            width: 70%;
+            width: 1200px;
             height: 50%;
             background-color: white;
             justify-content: space-between;
@@ -65,7 +65,7 @@ p {
                 height: 45px;
                 font-size: 35px;
                 border: none;
-                font-family: 'VT323', monospace;
+                font-family: 'VT323', 'NanumSquareR', monospace;
                 padding: 2px 4px 2px 4px;
                 border-bottom: 1px solid black;
             }
@@ -129,7 +129,7 @@ p {
                 height: 30px;
                 font-size: 25px;
                 border: none;
-                font-family: 'VT323', monospace;
+                font-family: 'VT323', 'NanumSquareR', monospace;
                 padding: 2px 4px 2px 4px;
                 border-bottom: 1px solid black;
             }

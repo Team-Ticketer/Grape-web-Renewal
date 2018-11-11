@@ -7,7 +7,7 @@ const MainPage = ({changeConcertName, changeArtistName, changeDate, changeLocati
     let dt = new Date()
     return (
         <div className="main__wrapper">
-            <img src={`/images/concert-idol.png`} alt="" className="main__background__img"/>
+            <img src={`/images/concert-idol.png`} style={{width:window.screen.width}} className="main__background__img"/>
             <span className="main__title">> Let's Pick <span className="main__title__underbar">Grape</span>!</span>
             <div className="main__ticket__wrapper">
                 <div className="main__ticket__input">

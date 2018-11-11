@@ -47,7 +47,7 @@ class Main extends Component {
 
   render() { 
     return (
-      <div className="Main">
+      <div className="Main" style={{width: window.screen.width}}>
         <MainPage changeConcertName={this.changeConcertName} changeArtistName={this.changeArtistName} changeDate={this.changeDate} changeLocation={this.changeLocation} state={this.state} onSearch={this.handleSearch}/>
         <Discover />
         <Footer />

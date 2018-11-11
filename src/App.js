@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import * as walletActions from 'actions/wallet';
 
 import './App.scss'
+import Navigation from './components/common/Navigation';
 
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Navigation/>
         {this.props.children}
       </div>
     )
