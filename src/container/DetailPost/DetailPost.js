@@ -9,7 +9,7 @@ import './DetailPost.scss'
 class DetailPost extends Component {
     state = {
         concertTitle: 'GDG DevFest Seoul 2018 ',
-        imgSrc: '/images/detail-img.png',
+        imgSrc: '/images/detail-img.jpg',
         place: 'Coex, Grand Balloon',
         startDate: '2019-10-23',
         endDate: '2019-10-26',
