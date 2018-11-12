@@ -5,6 +5,7 @@
   background-color: #ffffff;
   position: absolute;
   top: 0;
+  z-index: 99;
   &__wrapper{
     position: relative;
     width: 1366px;
@@ -27,11 +28,12 @@
       line-height: 85px;
       text-align: right;
       color: #6b10af;
-      &__false {
+      &--false {
         font-family: 'NanumSquareR';
       }
-      &__true {
+      &--true {
         font-family: 'VT323', 'NanumSquareR';
+        font-size: 22px;
       }
     }
   }

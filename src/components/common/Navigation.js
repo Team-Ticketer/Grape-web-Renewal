@@ -1,51 +1,47 @@
 import React, { Component } from 'react';
-import cookie from 'react-cookies';
+import { Link } from 'react-router-dom';
+import cookie from 'react-cookies'
 import axios from 'axios';
+import _ from 'lodash';
 import './css/Navigation.scss';
+import NaviPopup from './NaviPopup';
 
 class Navigation extends Component {
-  constructor() {
-    super();
-    this.state = {
-      token: '',
-      name: '',
-    };
-  }
+  state = {
+    name: '',
+    token: '',
+    isPopup: false,
+  };
   componentDidMount() {
-    if (cookie.load('token') !== '') {
-      const foo = async function () {
-        const token = await cookie.load('token');
-        this.setState({
-          token
-        });
-        axios({
-          method: 'post',
-          url: 'https://kapi.kakao.com/v2/user/me',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
-          },
-        }).then((res) => {
-          this.setState({name: res.data.properties.nickname});
-        })
-      }
-      foo();
+    if (!_.isUndefined(cookie.load('token'))) {
+      const cookieToken = cookie.load('token');
+      this.setState({
+        token: cookieToken
+      });
+      this.setState({name: localStorage.getItem('name')})
+    } else {
+      localStorage.removeItem('name');
     }
   }
   render() {
-    const { token, name } = this.state;
+    const { token, name, isPopup } = this.state;
     return (
       <div className="Navigation" style={{width: window.screen.width}}>
         <div className="Navigation__wrapper">
-          <div className="Navigation__wrapper__title">
-            GRAPE
-          </div>
+          <Link to="/">
+            <div className="Navigation__wrapper__title">
+              GRAPE
+            </div>
+          </Link>
           {token === '' ? 
             <div className="Navigation__wrapper__btn Navigation__wrapper__btn--false">
-              Login
-            </div> :
-            <div className="Navigation__wrapper__btn Navigation__wrapper__btn--true">
-              ▼ {name}
+              <Link to='/login'>Login</Link>
+            </div>: 
+            <div className="Navigation__wrapper__btn Navigation__wrapper__btn--true" >
+              <div onClick={() => this.setState((prevstate) => ({isPopup: !prevstate.isPopup}))}>
+                ▼ {name}
+              </div>
+              {isPopup ? <NaviPopup/> : null}
             </div>
           }
         </div>

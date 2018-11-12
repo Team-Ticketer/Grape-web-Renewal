@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import KakaoLogin from 'react-kakao-login';
 import cookie from 'react-cookies';
+import withLoding from 'components/common/withLoding';
 import './css/LoginContent.scss';
 import {JSkey} from '../../core/APIkey';
 
+@withLoding
 class LoginContent extends Component {
+  constructor(props){
+    super(props);
+  }
   render() { 
     return (
       <div className="LoginContent">
         <div className="LoginContent__wrapper">
           Log In
-          <KakaoLogin jsKey={JSkey} onSuccess={this.success} render={(props) => 
-          <div className="LoginContent__wrapper__btn" onClick={() => props.onClick()}>
+          <KakaoLogin jsKey={JSkey} onSuccess={this.success} onFailure={this.failure} render={(props) => 
+          <div className="LoginContent__wrapper__btn" onClick={() => {this.props.changeLodingState(); props.onClick()}}>
             Login with kakao ID
           </div>
           }/>
@@ -30,16 +35,16 @@ class LoginContent extends Component {
      * 딱히 좋은방법은 아님.. 빠른시일내에 고쳐야지
      * @todo axios에서 options 메소드 안시키는 방법 찾기
     */
-    // Kakao.API.request({
-    //     url: '/v2/user/me',
-    //     success: (result) => {
-    //         localStorage.setItem('name', result.properties.nickname)
-    //         return location.href = '/payment'
-    //     }
-    // });
+    Kakao.API.request({
+        url: '/v2/user/me',
+        success: (result) => {
+            localStorage.setItem('name', result.properties.nickname)
+            return location.href = '/mypage'
+        }
+    });
   }
   failure(error) {
-      console.log(error);
+    this.props.changeLodingState();
   }
 }
  

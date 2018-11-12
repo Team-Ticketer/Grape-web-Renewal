@@ -1,0 +1,54 @@
+.NaviPopup {
+  position: absolute;
+  cursor: default;
+  width: 200px;
+  height: 200px;
+  top: 80px;
+  right: -20px;
+  padding: 0px;
+  background: #FFFFFF;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: #000000 solid 1px;
+  z-index: 100;
+  padding: 20px;
+  &:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 15px 15px;
+    border-color: #FFFFFF transparent;
+    display: block;
+    width: 0;
+    z-index: 101;
+    top: -15px;
+    right: 30px;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 15px 15px;
+    border-color: #000000 transparent;
+    display: block;
+    width: 0;
+    z-index: 100;
+    top: -16px;
+    right: 30px;
+  }
+  &__menu{
+    text-align: left;
+    cursor: pointer;
+    line-height: 2;
+    font-size: 20px;
+    color: #3d3d3d;
+    transition: 0.5s;
+    &:hover{
+      color: #6b10af;
+    }
+    &:nth-child(4){
+      text-align: center;
+    }
+  }
+}
