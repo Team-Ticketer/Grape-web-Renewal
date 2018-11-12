@@ -2,7 +2,7 @@ import {
   INTEGRATE_WALLET,
   LOAD_WALLET,
   REMOVE_WALLET,
-} from 'actions/actionTypes'
+} from '../actions/actionTypes'
 
 import { cav } from 'klaytn/caver'
 
