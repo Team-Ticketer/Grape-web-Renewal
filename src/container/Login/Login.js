@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import cookie from 'react-cookies';
 import _ from 'underscore';
 import { browserHistory } from 'react-router';
-import './Login.scss';
 import LoginContent from 'components/Login/LoginContent';
+import './Login.scss';
 
 class Login extends Component {
   componentDidMount() {
@@ -14,8 +14,8 @@ class Login extends Component {
   }
   render() { 
     return (
-      <div className="Login" style={{}}>
-        <LoginContent />
+      <div className="Login" style={{width:window.screen.width}}>
+        <LoginContent/>
       </div>
     );
   }
