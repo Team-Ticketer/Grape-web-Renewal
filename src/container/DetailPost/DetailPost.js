@@ -19,7 +19,7 @@ class DetailPost extends Component {
         lat: 33.500315,
         lng: 126.530035,
         youtubeUri: '1e-xZ0JOLgY',
-        ticketLists: [{ name: 'Class A Ticket', price: 20, amount: 5},{ name: 'Class B Ticket', ticketPrice: 15, amount: 25},{ name: 'Class C Ticket', price: 10, amount: 0}]
+        ticketLists: [{ name: 'Class A Ticket', price: 20, amount: 5, transferable: true },{ name: 'Class B Ticket', ticketPrice: 15, amount: 25, transferable: true },{ name: 'Class C Ticket', price: 10, amount: 0, transferable: false }]
     }
     
     componentDidMount () {

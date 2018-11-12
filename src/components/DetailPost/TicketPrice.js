@@ -9,6 +9,7 @@ const TicketPrice = ({ticketLists}) => {
             <div className="detail__concert__price__left">
                 <span>{data.name}</span>
                 <span>KLY {data.price}</span>
+                <span>{data.transferable? 'Transferable': 'Not Transferable'}</span>
             </div>
             <span className='detail__concert__price__right'>{data.amount === 0 ? 'Sold out': data.amount + ' left'}</span>
         </div>
