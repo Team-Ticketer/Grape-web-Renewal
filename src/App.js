@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 
-import * as walletActions from 'actions/wallet';
+import * as walletActions from './core/redux/actions/wallet';
 
 import './App.scss'
 import Navigation from './components/common/Navigation';

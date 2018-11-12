@@ -2,7 +2,7 @@ import {
   INTEGRATE_WALLET,
   LOAD_WALLET,
   REMOVE_WALLET,
-} from 'actions/actionTypes'
+} from './actionTypes'
 
 export const integrateWallet = (privateKey) => ({
   type: INTEGRATE_WALLET,
