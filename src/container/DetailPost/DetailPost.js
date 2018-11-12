@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import $ from "jquery";
+import axios from 'axios';
 
 import DetailInfo from 'components/DetailPost/DetailInfo';
 import DetailContent from 'components/DetailPost/DetailContent';
@@ -18,10 +19,11 @@ class DetailPost extends Component {
         lat: 33.500315,
         lng: 126.530035,
         youtubeUri: '1e-xZ0JOLgY',
-        ticketLists: [{ ticketName: 'Class A Ticket', ticketPrice: 20, ticketAmount: 5},{ ticketName: 'Class B Ticket', ticketPrice: 15, ticketAmount: 25},{ ticketName: 'Class C Ticket', ticketPrice: 10, ticketAmount: 0}]
+        ticketLists: [{ name: 'Class A Ticket', price: 20, amount: 5},{ name: 'Class B Ticket', ticketPrice: 15, amount: 25},{ name: 'Class C Ticket', price: 10, amount: 0}]
     }
     
     componentDidMount () {
+        const {match} = this.props;
         var topBar = $("#detail__concert__buy__btn").offset();
  
         $(window).scroll(function(){
@@ -36,6 +38,11 @@ class DetailPost extends Component {
             }
     
         });
+
+        axios.get(`http://grape-server.herokuapp.com/concert/${match.params.post}`)
+        .then(data => {
+            
+        })
     }
 
     render() {
