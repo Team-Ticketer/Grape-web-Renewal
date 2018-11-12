@@ -14,7 +14,7 @@ const renderRoutes = RootComponent => (
           <Route path='/' component={Main} exact/>
           <Route path='/login' component={Login} exact/>
           <Route path='/concerts' component={Concerts} exact/>
-          <Route path='/detail/:post' component={DetailPost} exact/>
+          <Route path='/concert/:post' component={DetailPost} exact/>
         </RootComponent>
       </Switch>
     </BrowserRouter>

@@ -5,12 +5,12 @@ import './TicketPrice.scss';
 const TicketPrice = ({ticketLists}) => {
     const ticketsList = ticketLists.map(data => {
 
-        return <div className={data.ticketAmount === 0 ?"detail__concert__price__ticket solded" : 'detail__concert__price__ticket'} key={data.ticketName}>
+        return <div className={data.amount === 0 ?"detail__concert__price__ticket solded" : 'detail__concert__price__ticket'} key={data.name}>
             <div className="detail__concert__price__left">
-                <span>{data.ticketName}</span>
-                <span>KLY {data.ticketPrice}</span>
+                <span>{data.name}</span>
+                <span>KLY {data.price}</span>
             </div>
-            <span className='detail__concert__price__right'>{data.ticketAmount === 0 ? 'Sold out': data.ticketAmount + ' left'}</span>
+            <span className='detail__concert__price__right'>{data.amount === 0 ? 'Sold out': data.amount + ' left'}</span>
         </div>
     })
     return (
