@@ -5,10 +5,6 @@ contract Grape {
     uint256 concertCount = 0;
     uint256 ticketBuyerListCount = 0;
     
-    modifier isOwner(address user) {
-        require(msg.sender == user, "Authorization Failed");
-        _;
-    }
 
     modifier isAuction(uint256 _ticketId, uint256 _concertId) {
         Concert checkConcert = concertList[_concertId];
