@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { Main , Login , Concerts, DetailPost } from './container/index';
 
-import store from './store'
+import store from './core/redux/store';
 
 
 const renderRoutes = RootComponent => (

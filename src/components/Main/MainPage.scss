@@ -5,7 +5,7 @@ p {
     &__wrapper {
         display: flex;
         width: 100%;
-        height: 93vh;
+        height: 1300px;
         justify-content: center;
         align-items: center;
         font-family: 'VT323', 'nanumsquareround';
@@ -14,8 +14,8 @@ p {
 
     &__background__img {
         position: absolute;
-        width: 100vw;
-        height: 100vh;
+        left: 0;
+        height: 1300px;
         z-index: -1;
     }
 
@@ -31,7 +31,7 @@ p {
     &__ticket{
         &__wrapper {
             display: flex;
-            width: 70%;
+            width: 1200px;
             height: 50%;
             background-color: white;
             justify-content: space-between;

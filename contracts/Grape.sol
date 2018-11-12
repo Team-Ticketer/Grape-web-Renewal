@@ -3,11 +3,8 @@ pragma experimental ABIEncoderV2;
 
 contract Grape {
     uint256 concertCount = 0;
+    uint256 ticketBuyerListCount = 0;
     
-    modifier isOwner(address user) {
-        require(msg.sender == user, "Authorization Failed");
-        _;
-    }
 
     modifier isAuction(uint256 _ticketId, uint256 _concertId) {
         Concert checkConcert = concertList[_concertId];
@@ -100,34 +97,15 @@ contract Grape {
     struct AuctionHistory {
         uint256 date;
         address beforeOwnerAddress;
-        string beforeOwnerName;
         address afterOwnerAddress;
-        string afterOwnerName;
         uint256 price;
         /*
             date - 양도한 날짜
             beforeOwnerAddress - 이전 주인의 지갑 주소
-            beforeOwnerName - 이전 주인의 닉네임 (정규화를 해야될까... 싶음)
             afterOwnerAddress - 양도 후 주인의 지갑수조
-            afterOwnerName - 양도 후 주인의 닉네임
             price - 구매 가격
         */
     }
-
-    struct TicketBuyer {
-        uint256 concertId;
-        uint256 ticketType;
-        address requester;
-        uint256 date;
-        /*
-            concertId - 콘서트 이름
-            ticketType - 콘서트의 티켓 타입
-            requester - 양도 대기 요청한 사람
-            date - 양도 대기 요청한 일자
-        */
-    }
-
-    mapping (uint256 => TicketBuyer) ticketBuyerList;
 
     function createConcert(
         uint256 _saleStartTime,
@@ -167,6 +145,7 @@ contract Grape {
     public payable {
         Concert _selectConcert = concertList[_concertId];
         require(canOnlySaleWithinSaleTime(_selectConcert.saleStartTime, _selectConcert.saleEndTime));
+        require(_selectConcert.ticketAmount[_ticketType] > 0, "No more Ticket");
         address _creator = _selectConcert.creator;
         uint256 _price = _selectConcert.ticketPrice[_ticketType];
         _creator.transfer(_price);
@@ -223,5 +202,87 @@ contract Grape {
         _ticketDescription = selectConcert.ticketDescription[ticketType];
         _ticketAmount = selectConcert.ticketAmount[ticketType];
         _isTransferable = selectConcert.isTransferable[ticketType];
+    }
+
+    function viewMyTicket(uint256 concertId) public view returns(
+        uint256 _concertId,
+        uint256 _ticketId,
+        uint256 _date,
+        uint256 _price,
+        bool _isTransfer,
+        uint256 _ticketHistoryCount
+    ) {
+        Concert selectConcert = concertList[concertId];
+        for (var index = 0; index < selectConcert.ticketListCount; index++) {
+            if (msg.sender == selectConcert.ticketList[index].owner) {
+                _concertId = concertId;
+                _ticketId = index;
+                _date = selectConcert.ticketList[index].date;
+                _price = selectConcert.ticketList[index].price;
+                _isTransfer = selectConcert.ticketList[index].isTransfer;
+                _ticketHistoryCount = selectConcert.ticketList[index].ticketHistoryCount;
+                break;
+            }
+        }
+    }
+
+    function viewMyTicketHistory(uint256 concertId, uint256 ticketId, uint256 historyIndex)
+    public view returns (
+        uint256 _date,
+        address _beforeOwnerAddress,
+        address _afterOwnerAddress,
+        string _afterOwnerName,
+        uint256 _price
+    ) {
+        AuctionHistory selectTicketHistory = concertList[concertId].ticketList[ticketId].transferHistorys[historyIndex];
+        _date = selectTicketHistory.date;
+        _beforeOwnerAddress = selectTicketHistory.beforeOwnerAddress;
+        _afterOwnerAddress = selectTicketHistory.afterOwnerAddress;
+        _price = selectTicketHistory.price;
+    }
+
+    function buyUsedTicket(uint256 _concertId, uint256 _ticketType) public payable
+    returns(
+        bool _isSearch
+    ) {
+        bool isSearch = false;
+        // 찾았는지 못찾았는지 표시
+        for (uint256 i = 0; i < concertList[_concertId].ticketListCount; i++) {
+            Ticket selectTicket = concertList[_concertId].ticketList[i];
+            if (selectTicket.ticketType == _ticketType && selectTicket.isTransfer) {
+                isSearch = true;
+                selectTicket.owner.transfer(concertList[_concertId].ticketPrice[_ticketType]);
+                concertList[_concertId].creator.transfer(concertList[_concertId].ticketPrice[_ticketType] * 1 / 10);
+                selectTicket.isTransfer = false;
+                selectTicket.transferHistorys[selectTicket.ticketHistoryCount].date = block.timestamp;
+                selectTicket.transferHistorys[selectTicket.ticketHistoryCount].beforeOwnerAddress = selectTicket.owner;
+                selectTicket.transferHistorys[selectTicket.ticketHistoryCount].afterOwnerAddress = msg.sender;
+                selectTicket.transferHistorys[selectTicket.ticketHistoryCount].price = concertList[_concertId].ticketPrice[_ticketType] * 11 / 10;
+                selectTicket.ticketHistoryCount++;
+                selectTicket.owner = msg.sender;
+                break;
+            }
+        }
+        _isSearch = isSearch;
+    }
+
+    function sellUsedTicket(uint256 _concertId, uint256 _ticketType) public payable {
+        for (uint256 i = 0; i < concertList[_concertId].ticketListCount; i++) {
+            if (concertList[_concertId].ticketList[i].owner == msg.sender && !concertList[_concertId].ticketList[i].isTransfer) {
+                concertList[_concertId].creator.transfer(concertList[_concertId].ticketPrice[_ticketType] * 1 / 10);
+                concertList[_concertId].ticketList[i].isTransfer = true;
+                break;
+            }
+        }
+    }
+
+    function cancleSellUsedTicket(uint256 _concertId, uint256 _ticketType) public payable {
+        for (uint256 i = 0; i < concertList[_concertId].ticketListCount; i++) {
+            if (concertList[_concertId].ticketList[i].owner == msg.sender && concertList[_concertId].ticketList[i].isTransfer) {
+                concertList[_concertId].creator.transfer(concertList[_concertId].ticketPrice[_ticketType] * 1 / 10);
+                concertList[_concertId].ticketList[i].isTransfer = false;
+                break;
+            }
+        }
     }
 }

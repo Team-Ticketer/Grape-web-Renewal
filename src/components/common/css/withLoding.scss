@@ -1,0 +1,21 @@
+.Loding{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba($color: #FFF, $alpha: 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  &__wrapper{
+    &__msg{
+      font-size: 60px;
+      font-family: 'VT323';
+      color: #6b10af;
+      line-height: 1.5;
+      text-align: center;
+    }
+  }
+}
