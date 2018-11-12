@@ -5,6 +5,10 @@ contract Grape {
     uint256 concertCount = 0;
     uint256 ticketBuyerListCount = 0;
     
+    modifier isOwner(address user) {
+        require(msg.sender == user, "Authorization Failed");
+        _;
+    }
 
     modifier isAuction(uint256 _ticketId, uint256 _concertId) {
         Concert checkConcert = concertList[_concertId];
@@ -12,31 +16,20 @@ contract Grape {
         _;
     }
 
-    function checkStartSaleTime (uint256 _saleStartTime)
-    public view returns (bool _isBeforeSaleTime) {
-        if (_saleStartTime != 0) {
-            if (_saleStartTime >= block.timestamp) {
-                return true;
-            }
-        } else {
-            return true;
-        }
-        return false;
+    modifier checkStartSaleTime (uint256 _saleStartTime) {
+        require(_saleStartTime >= block.timestamp && _saleStartTime != 0);
+        _;
     }
 
-    function checkEndSaleTime (uint256 _saleEndTime)
-    public view returns(bool _isAfterSaleTime) {
-        if (_saleEndTime > block.timestamp) {
-            return true;
-        }
-        return false;
-    }
+    modifier checkEndSaleTime (uint256 _saleEndTime) {
+        require(_saleEndTime > block.timestamp == true);
+        _;
+    }    
 
-    function canOnlySaleWithinSaleTime (uint256 _saleStartTime, uint256 _saleEndTime)
-    public view returns (bool isCorrectRequest) {
-        require(checkStartSaleTime(_saleStartTime), "Befoe SaleTime");
-        require(checkEndSaleTime(_saleEndTime), "End SaleTime");
-        return true;
+    modifier canOnlySaleWithinSaleTime (uint256 _saleStartTime, uint256 _saleEndTime) {
+        require(_saleStartTime >= block.timestamp && _saleStartTime != 0);
+        require(_saleEndTime > block.timestamp == true);
+        _;
     }
 
     struct Concert {
@@ -142,10 +135,8 @@ contract Grape {
         uint256 _concertId,
         uint256 _ticketType
     ) 
-    public payable {
-        Concert _selectConcert = concertList[_concertId];
-        require(canOnlySaleWithinSaleTime(_selectConcert.saleStartTime, _selectConcert.saleEndTime));
-        require(_selectConcert.ticketAmount[_ticketType] > 0, "No more Ticket");
+    public payable canOnlySaleWithinSaleTime(concertList[_concertId].saleStartTime,concertList[_concertId].saleEndTime){
+        Concert _selectConcert = concertList[_concertId];        
         address _creator = _selectConcert.creator;
         uint256 _price = _selectConcert.ticketPrice[_ticketType];
         _creator.transfer(_price);
