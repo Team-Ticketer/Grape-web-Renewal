@@ -9,7 +9,7 @@ const SearchConcerts = ({ title, artist, date, location, changeTitle, changeArti
             <input type="text" className="search__input" placeholder="Title" onChange={changeTitle} value={title}/>
             <div className="search__form__bottom">
                 <input type="text" placeholder="Artist" className="search__input__bottom" onChange={changeArtist} value={artist}/>
-                <input type="text" placeholder="Date" className="search__input__bottom" onChange={changeDate} value={date}/>
+                <input type="date" placeholder="Date" className="search__input__bottom" onChange={changeDate} value={date}/>
                 <input type="text" placeholder="Location" className="search__input__bottom" onChange={changeLocation} value={location}/>
             </div>
             </div>

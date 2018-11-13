@@ -1,16 +1,16 @@
 .search
 {
     &__wrapper {
-        position: relative;
+        position: sticky;
         display: flex;
-        width: 40vw;
-        height: 10vh;
+        width: 50vw;
+        height: 12vh;
         border-radius: 7px;
         padding: 2vh 4vw 2vh 4vw;
         margin-top: 3vh;
         background-color: rgba(164,79,227, 0.73);
         left: 30%;
-        top: 150px;
+        top: 2vh;
         z-index: 2;
         justify-content: space-between;
     }
@@ -24,8 +24,8 @@
     }
 
     &__btn {
-        width: 28%;
-        height: 28%;
+        width: 20px;
+        height: 20px;
         &__wrapper {
             display: flex;
             width: 10%;
@@ -44,7 +44,7 @@
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
         border: solid 3px #6b10af;
         font-family: 'VT323', 'nanumsquareround';
-        font-size: 1vw;
+        font-size: 1.3vw;
     }
 
     &__form__bottom {
@@ -62,7 +62,7 @@
 
         &::placeholder {
             font-family: 'VT323', 'nanumsquareround', monospace;
-            font-size: 1vw;
+            font-size: 1.3vw;
         }
     }
 }

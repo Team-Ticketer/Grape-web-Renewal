@@ -6,11 +6,13 @@ import DetailInfo from 'components/DetailPost/DetailInfo';
 import DetailContent from 'components/DetailPost/DetailContent';
 
 import './DetailPost.scss'
+import { ADDRESS_CHANGE } from '../../core/redux/actions/actionTypes';
 
 class DetailPost extends Component {
     state = {
         concertTitle: 'GDG DevFest Seoul 2018 ',
         imgSrc: '/images/detail-img.jpg',
+        address: '',
         place: 'Coex, Grand Balloon',
         startDate: '2019-10-23',
         endDate: '2019-10-26',
@@ -19,6 +21,7 @@ class DetailPost extends Component {
         lat: 33.500315,
         lng: 126.530035,
         youtubeUri: '1e-xZ0JOLgY',
+        owner: {},
         ticketLists: [{ name: 'Class A Ticket', price: 20, amount: 5, transferable: true },{ name: 'Class B Ticket', ticketPrice: 15, amount: 25, transferable: true },{ name: 'Class C Ticket', price: 10, amount: 0, transferable: false }]
     }
     
@@ -40,8 +43,25 @@ class DetailPost extends Component {
         });
 
         axios.get(`http://grape-server.herokuapp.com/concert/${match.params.post}`)
-        .then(data => {
-            
+        .then(res => {
+            this.setState({
+                concerTitle: res.data.name,
+                artist: res.data.artist,
+                description: res.data.content,
+                youtubeUri: res.data.video,
+                imgSrc: res.data.picture,
+                address: res.data.address,
+                place: res.data.placeName,
+                lat: res.data.lat,
+                lng: res.data.lng,
+                startDate: res.data.startDate,
+                endDate: res.data.endDate,
+                owner: res.data.owner,
+                ticketLists: res.data.tickets
+            })
+        })
+        .catch(err => {
+            console.warn("ERR!!  "+ err)
         })
     }
 
