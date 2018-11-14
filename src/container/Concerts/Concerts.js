@@ -43,11 +43,13 @@ class Concerts extends Component {
         this.state.artist !== '' ? dataForm['artist'] = this.state.artist:null;
         this.state.date !== '' ? dataForm['date'] = this.state.date:null;
         this.state.location !== '' ? dataForm['address'] = this.state.location:null;
+        console.log(dataForm)
         axios.get('http://grape-server.herokuapp.com/concert', dataForm)
         .then(res => {
             this.setState({
                 concertsList: res.data
             })
+            console.log(res.data)
         })
     }
 
@@ -62,8 +64,11 @@ class Concerts extends Component {
             })
             localStorage.removeItem("search_item")
         })
+        .catch(err => {
+            localStorage.removeItem("search_item")
+        })
     }
-
+    
     render() {
         return (
             <div className="concerts__wrapper">
