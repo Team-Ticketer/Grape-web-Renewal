@@ -20,6 +20,7 @@
   "license": "GPL-3.0",
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-plugin-transform-decorators": "^6.24.1",
     "bignumber.js": "^7.2.1",
     "caver-js": "0.0.1-b",
     "classnames": "^2.2.5",
@@ -31,6 +32,7 @@
     "qrcode-react": "^0.1.16",
     "react": "^16.3.2",
     "react-cookies": "^0.1.0",
+    "react-datetime-picker": "^2.0.0",
     "react-dom": "^16.3.2",
     "react-kakao-login": "^1.1.0",
     "react-lottie": "^1.2.3",
@@ -38,6 +40,7 @@
     "react-router": "^3.2.1",
     "react-router-dom": "^4.3.1",
     "react-router-redux": "^4.0.8",
+    "react-youtube": "^7.8.0",
     "redux": "^4.0.0",
     "redux-connect-decorator": "^0.2.1",
     "redux-thunk": "^2.2.0",

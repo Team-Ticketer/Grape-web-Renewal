@@ -1,0 +1,23 @@
+.InputCompany{
+  width: 850px;
+  height: 235px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  border: solid 1px #707070;
+  padding: 30px;
+  margin-top: 2vh;
+  &__input{
+    display: inline-block;
+    width: calc(420px - 30px);
+    border-radius: 6px;
+    height: 60px;
+    border: solid 1px #707070;
+    padding: 0 5px 0 5px;
+    font-family: 'VT323', 'nanumsquareround',monospace;
+    font-size: 30px;
+    &__description {
+      display: block;
+      width: 850px;
+    }
+  }
+}
