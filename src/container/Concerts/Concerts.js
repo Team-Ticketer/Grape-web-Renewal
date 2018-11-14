@@ -6,17 +6,7 @@ import ConcertsList from 'components/Concerts/ConcertsList';
 
 class Concerts extends Component {
     state = {
-        concertsList: [
-            {_id: '', picture: "/images/item-1.png", name: "IU", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20}, 
-            {_id: '', picture: "/images/item-2.png", name: "IMG 2", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20},
-            {_id: '', picture: "/images/item-3.png", name: "IMG3", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20},
-            {_id: '', picture: "/images/item-1.png", name: "IU", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20}, 
-            {_id: '', picture: "/images/item-2.png", name: "IMG 2", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20},
-            {_id: '', picture: "/images/item-3.png", name: "IMG 3", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20},
-            {_id: '', picture: "/images/item-1.png", name: "IU", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20}, 
-            {_id: '', picture: "/images/item-2.png", name: "IMG 2", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20},
-            {_id: '', picture: "/images/item-3.png", name: "IMG 3", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20}
-        ],
+        concertsList: [],
         title: '',
         artist: '',
         date: '',
@@ -53,13 +43,32 @@ class Concerts extends Component {
         this.state.artist !== '' ? dataForm['artist'] = this.state.artist:null;
         this.state.date !== '' ? dataForm['date'] = this.state.date:null;
         this.state.location !== '' ? dataForm['address'] = this.state.location:null;
-        console.log(dataForm);
+        console.log(dataForm)
         axios.get('http://grape-server.herokuapp.com/concert', dataForm)
         .then(res => {
-
+            this.setState({
+                concertsList: res.data
+            })
+            console.log(res.data)
         })
     }
 
+    componentDidMount = () => {
+        let searchData = localStorage.getItem("search_item")
+        axios.get('http://grape-server.herokuapp.com/concert', searchData)
+        .then(res => {
+            // 이 부분 포스터 대체 부분이므로 지워도댐
+            res.data[0].poster = '/images/item-1.png'
+            this.setState({
+                concertsList: res.data
+            })
+            localStorage.removeItem("search_item")
+        })
+        .catch(err => {
+            localStorage.removeItem("search_item")
+        })
+    }
+    
     render() {
         return (
             <div className="concerts__wrapper">

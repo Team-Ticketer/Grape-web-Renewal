@@ -6,7 +6,7 @@ import './ConcertsList.scss';
 
 const ConcertsList = ({concertsList}) => {
     const concertsArray = concertsList.map(
-        data => <ConcertsItem data={data}/>
+        data => <ConcertsItem data={data} key={data['_id']}/>
     )
     return (
         <div>

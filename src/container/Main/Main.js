@@ -3,8 +3,6 @@ import Discover from 'components/Main/Discover';
 import Footer from 'components/Main/Footer';
 import MainPage from 'components/Main/MainPage';
 
-import axios from 'axios';
-
 import './Main.scss';
 
 class Main extends Component {
@@ -41,7 +39,15 @@ class Main extends Component {
   }
 
   handleSearch = () => {
-    // axios
+    const { history } = this.props;
+    const { concertName, artistName, date, location } = this.state
+    const searchData = {}
+    concertName !== '' ? searchData.name = concertName: null
+    artistName !== '' ? searchData.artist = artistName: null
+    date !== '' ? searchData.date = date: null
+    location !== '' ? searchData.address = location: null
+    localStorage.setItem("search_item", JSON.stringify(searchData))
+    history.push('/concerts')
   }
 
 
