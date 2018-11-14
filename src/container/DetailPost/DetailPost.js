@@ -45,7 +45,7 @@ class DetailPost extends Component {
         axios.get(`http://grape-server.herokuapp.com/concert/${match.params.post}`)
         .then(res => {
             this.setState({
-                concerTitle: res.data.name,
+                concertTitle: res.data.name,
                 artist: res.data.artist,
                 description: res.data.content,
                 youtubeUri: res.data.video,
@@ -59,10 +59,12 @@ class DetailPost extends Component {
                 owner: res.data.owner,
                 ticketLists: res.data.tickets
             })
+            console.log(res.data.lat + ' ' + res.data.lng)
         })
         .catch(err => {
             console.warn("ERR!!  "+ err)
         })
+
     }
 
     render() {

@@ -6,7 +6,7 @@ import './ConcertsItem.scss'
 const ConcertItem = ({data}) => {
     return (
         <div className="concerts__list__item">
-            <img className="concerts__list__item__img" src={data.picture}/>
+            <img className="concerts__list__item__img" src={data.poster}/>
             <div className="concerts__list__item__content__wrapper">
                 <div className="concerts__list__item__content__wrapper__inner">
                     <p className="concerts__list__item__content__title">{data.name}</p>

@@ -3,8 +3,6 @@ import Discover from 'components/Main/Discover';
 import Footer from 'components/Main/Footer';
 import MainPage from 'components/Main/MainPage';
 
-import axios from 'axios';
-
 import './Main.scss';
 
 class Main extends Component {
@@ -41,7 +39,16 @@ class Main extends Component {
   }
 
   handleSearch = () => {
-    // axios
+    const { history } = this.props;
+    history.push({
+        pathname: '/concerts',
+        state:{
+            name: this.state.concertName,
+            artist: this.state.artistName,
+            date: this.state.date,
+            address: this.state.location
+        }
+    })
   }
 
 

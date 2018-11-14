@@ -7,15 +7,15 @@ import ConcertsList from 'components/Concerts/ConcertsList';
 class Concerts extends Component {
     state = {
         concertsList: [
-            {_id: '', picture: "/images/item-1.png", name: "IU", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20}, 
-            {_id: '', picture: "/images/item-2.png", name: "IMG 2", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20},
-            {_id: '', picture: "/images/item-3.png", name: "IMG3", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20},
-            {_id: '', picture: "/images/item-1.png", name: "IU", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20}, 
-            {_id: '', picture: "/images/item-2.png", name: "IMG 2", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20},
-            {_id: '', picture: "/images/item-3.png", name: "IMG 3", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20},
-            {_id: '', picture: "/images/item-1.png", name: "IU", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20}, 
-            {_id: '', picture: "/images/item-2.png", name: "IMG 2", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20},
-            {_id: '', picture: "/images/item-3.png", name: "IMG 3", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20}
+            {_id: '', poster: "/images/item-1.png", name: "IU", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20}, 
+            {_id: '', poster: "/images/item-2.png", name: "IMG 2", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20},
+            {_id: '', poster: "/images/item-3.png", name: "IMG3", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20},
+            {_id: '', poster: "/images/item-1.png", name: "IU", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20}, 
+            {_id: '', poster: "/images/item-2.png", name: "IMG 2", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20},
+            {_id: '', poster: "/images/item-3.png", name: "IMG 3", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20},
+            {_id: '', poster: "/images/item-1.png", name: "IU", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20}, 
+            {_id: '', poster: "/images/item-2.png", name: "IMG 2", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20},
+            {_id: '', poster: "/images/item-3.png", name: "IMG 3", startDate: '2019 09 12', endDate: '2019 09 14', place: 'Tokyo-3', minPrice: 15, maxPrice: 20}
         ],
         title: '',
         artist: '',
@@ -56,8 +56,14 @@ class Concerts extends Component {
         console.log(dataForm);
         axios.get('http://grape-server.herokuapp.com/concert', dataForm)
         .then(res => {
-
+            this.setState({
+                concertsList: res.data
+            })
         })
+    }
+
+    componentDidMount = () => {
+        console.log(this.props.location.state)
     }
 
     render() {
