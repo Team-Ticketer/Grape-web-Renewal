@@ -40,15 +40,14 @@ class Main extends Component {
 
   handleSearch = () => {
     const { history } = this.props;
-    history.push({
-        pathname: '/concerts',
-        state:{
-            name: this.state.concertName,
-            artist: this.state.artistName,
-            date: this.state.date,
-            address: this.state.location
-        }
-    })
+    const { concertName, artistName, date, location } = this.state
+    const searchData = {}
+    concertName !== '' ? searchData.name = concertName: null
+    artistName !== '' ? searchData.artist = artistName: null
+    date !== '' ? searchData.date = date: null
+    location !== '' ? searchData.address = location: null
+    localStorage.setItem("search_item", JSON.stringify(searchData))
+    history.push('/concerts')
   }
 
 
