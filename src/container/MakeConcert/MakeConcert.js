@@ -7,7 +7,7 @@ import InputViedoLocation from '../../components/MakeConcert/InputVideoLocation'
 import InputImage from '../../components/MakeConcert/InputImage';
 import InputInfo from '../../components/MakeConcert/InputInfo';
 import { Link } from 'react-router-dom';
-import './MakeConcert.scss';
+import './css/MakeConcert.scss';
 
 class MakeConcert extends Component {
   render() { 

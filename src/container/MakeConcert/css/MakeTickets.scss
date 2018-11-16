@@ -1,0 +1,13 @@
+.MakeTickets{
+  width: 100%;
+  &__wrapper {
+    width: 1000px;
+    margin: 0 auto;
+    &__title {
+      font-size: 40px;
+      line-height: 1.2;
+      color: #3d3d3d;
+      margin-top: 20px;
+    }
+  }
+}

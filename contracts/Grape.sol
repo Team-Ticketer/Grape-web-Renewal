@@ -111,7 +111,7 @@ contract Grape {
         bool[] _isTransferable
     ) 
     public payable {
-        address foundation = 0x50e2CeB9B439b7CE7B346BE2Cae87a8B38B98e9B;
+        address foundation = 0xc39b1048d6dd7fb500a2e8f9fffa0ca33cd4db5a;
         foundation.transfer(20);
         concertList[concertCount] = (
             Concert(
