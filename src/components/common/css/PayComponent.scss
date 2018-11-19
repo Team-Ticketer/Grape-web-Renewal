@@ -1,0 +1,78 @@
+.PayComponent{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 19px;
+  background-color: rgba(0, 0, 0, 0.16);
+  color: #3d3d3d;
+  &__modal{
+    position: fixed;
+    top: calc(50vh - 250px);
+    left: calc(50vw - 400px);
+    z-index: 1001;
+    width: 800px;
+    height: 500px;
+    padding: 50px;
+    background-color: #FFF;
+    &__title{
+      font-size: 40px;
+      text-align: center;
+    }
+    &__Record{
+      display: block;
+      width: 100%;
+      border-bottom: 2px #3d3d3d solid;
+      margin-top: 30px;
+      &__title{
+        font-size: 30px;
+        line-height: 2;
+        text-align: center;
+        left: 50px;
+      }
+      &__value{
+        font-size: 30px;
+        line-height: 2;
+        display: inline-block;
+        width: 200px;
+        text-align: right;
+        position: absolute;
+        right: 50px;
+        &__klay{
+          color: #6b10af;
+        }
+      }
+    }
+    &__Balance{
+      margin-top: 20px;
+      position: relative;
+      font-size: 30px;
+      padding-left: 5px;
+      &__value{
+        position: absolute;
+        right: 0px;
+        &__klay{
+          color: #6b10af;
+        }
+      }
+    }
+    &__btn{
+      width: 200px;
+      height: 50px;
+      line-height: 50px;
+      color: #FFF;
+      font-size: 35px;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 6px;
+      margin: 0 auto;
+      margin-top: 50px;
+      background-color: #6b10af;
+    }
+  }
+}

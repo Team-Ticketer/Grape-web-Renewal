@@ -13,15 +13,15 @@ const initialState = {
 const walletReducer = (state = initialState, action) => {
   switch (action.type) {
     case INTEGRATE_WALLET:
-      const walletInstance = cav.klay.accounts.privateKeyToAccount(action.payload.privateKey)
-      cav.klay.accounts.wallet.add(walletInstance)
+      const walletInstance = cav.eth.accounts.privateKeyToAccount(action.payload.privateKey)
+      cav.eth.accounts.wallet.add(walletInstance)
       sessionStorage.setItem('walletInstance', JSON.stringify(walletInstance))
       return {
         ...state,
         walletInstance,
       }
     case LOAD_WALLET:
-      cav.klay.accounts.wallet.add(action.payload.walletInstance)
+      cav.eth.accounts.wallet.add(action.payload.walletInstance)
       return {
         ...state,
         walletInstance: action.payload.walletInstance,

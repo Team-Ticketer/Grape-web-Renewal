@@ -14,10 +14,6 @@ const initialState = {
   headerImage: null,
   posterImage: null,
   infomation: '',
-  tickets: [{
-    name: '',
-
-  }],
 };
 
 const concertReducer = (state=initialState, action) => {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import ConcertPay from './../../components/common/ConcertPay';
 import InputTicket from '../../components/MakeConcert/InputTicket';
 import './css/MakeTickets.scss';
 
@@ -12,6 +13,7 @@ class MakeTickets extends Component {
       ticketAmount: [1],
       isTransferable: [true],
       isOpen: [true],
+      modal: false,
     };
     this.deleteTicket = this.deleteTicket.bind(this);
     this.inputAmount = this.inputAmount.bind(this);
@@ -89,17 +91,23 @@ class MakeTickets extends Component {
   render() { 
     const { ticketName, ticketPrice, ticketAmount, isTransferable, isOpen } = this.state;
     return (
-      <div className="MakeTickets">
-        <div className="MakeConcert__title">
-          Make Concert!
-        </div>
-        <div className="MakeTickets__wrapper">
-          <div className="MakeTickets__wrapper__title">
-            New Ticket
+      <React.Fragment>
+        <div className="MakeTickets">
+          <div className="MakeConcert__title">
+            Make Concert!
           </div>
-          {this.renderTicket()}
+          <div className="MakeTickets__wrapper">
+            <div className="MakeTickets__wrapper__title">
+              New Ticket
+            </div>
+            {this.renderTicket()}
+          </div>
+          <div className="MakeTickets__wrapper__btn" onClick={()=> this.setState({modal:true})}>
+            Next: Payment
+          </div>
+          {this.state.modal ? <ConcertPay close ={() => this.setState({modal:false})} ticketName={this.state.ticketName} ticketPrice={this.state.ticketPrice} ticketAmount={this.state.ticketAmount} isTransferable={this.state.isTransferable} isOpen={this.state.isOpen}/> : null}
         </div>
-      </div>
+      </React.Fragment>
     );
   }
   renderTicket() {
@@ -112,4 +120,8 @@ class MakeTickets extends Component {
   }
 }
  
-export default MakeTickets;
+const mapStateToProps = (state) => ({
+  address: state.wallet.walletInstance.address,
+})
+
+export default connect(mapStateToProps, null)(MakeTickets);

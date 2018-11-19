@@ -40,7 +40,6 @@ contract Grape {
         uint256 ticketTypeCounts;
         string[] ticketName;
         uint256[] ticketPrice;
-        string[] ticketDescription;
         uint256[] ticketAmount;
         bool[] isTransferable;
         uint256 ticketListCount;
@@ -53,7 +52,6 @@ contract Grape {
             ticketTypeCounts - 티켓 타입이 몇개나 있는지
             ticketName - (배열) 티켓 타입의 이름
             ticketPrice - (배열) 티켓 타입의 가격
-            ticketDescription - (배열) 티켓 타입에 대한 설명
             ticketAmount - (배열) 티켓 타입에 따른 티켓의 갯수
             isTransferable - (배열) 티켓 타입에 따른 양도 가능 유무
             ticketListCount - 이 콘서트에 지금 발급된 티켓의 갯수
@@ -106,13 +104,10 @@ contract Grape {
         uint256 _ticketTypeCounts,
         string[] _ticketName,
         uint256[] _ticketPrice,
-        string[] _ticketDescription,
         uint256[] _ticketAmount,
         bool[] _isTransferable
     ) 
     public payable {
-        address foundation = 0xc39b1048d6dd7fb500a2e8f9fffa0ca33cd4db5a;
-        foundation.transfer(20);
         concertList[concertCount] = (
             Concert(
                 concertCount,
@@ -122,7 +117,6 @@ contract Grape {
                 _ticketTypeCounts,
                 _ticketName,
                 _ticketPrice,
-                _ticketDescription,
                 _ticketAmount,
                 _isTransferable,
                 0
@@ -135,25 +129,22 @@ contract Grape {
         uint256 _concertId,
         uint256 _ticketType
     ) 
-    public payable canOnlySaleWithinSaleTime(concertList[_concertId].saleStartTime,concertList[_concertId].saleEndTime){
-        Concert _selectConcert = concertList[_concertId];        
-        address _creator = _selectConcert.creator;
-        uint256 _price = _selectConcert.ticketPrice[_ticketType];
-        _creator.transfer(_price);
-        _selectConcert.ticketList[_selectConcert.ticketListCount] = Ticket(
+    public payable{
+        concertList[_concertId].ticketList[concertList[_concertId].ticketListCount] = Ticket(
             _concertId,
             msg.sender,
             _ticketType,
             block.timestamp,
-            _price,
+            concertList[_concertId].ticketPrice[_ticketType],
             false,
             0
         );
-        _selectConcert.ticketListCount = _selectConcert.ticketListCount + 1;
-        _selectConcert.ticketAmount[_ticketType] = _selectConcert.ticketAmount[_ticketType] - 1;
+        concertList[_concertId].ticketListCount = concertList[_concertId].ticketListCount + 1;
+        concertList[_concertId].ticketAmount[_ticketType] = concertList[_concertId].ticketAmount[_ticketType] - 1;
     }
 
     function viewConcert(uint256 concertId) public view returns (
+        address _creater,
         uint256 _ticketTypeCounts,
         uint256 _ticketHighPrice,
         uint256 _ticketLowPrice,
@@ -174,6 +165,7 @@ contract Grape {
                 tempAmount = tempAmount+selectConcert.ticketAmount[i];
             }
         }
+        _creater = selectConcert.creator;
         _ticketTypeCounts = selectConcert.ticketTypeCounts;
         _ticketHighPrice = tempHighPrice;
         _ticketLowPrice = tempLowPrice;
@@ -183,14 +175,12 @@ contract Grape {
     function viewConcertTicketType(uint256 concertId, uint256 ticketType) public view returns (
         string _ticketName,
         uint256 _ticketPrice,
-        string _ticketDescription,
         uint256 _ticketAmount,
         bool _isTransferable
     ) {
         Concert selectConcert = concertList[concertId];
         _ticketName = selectConcert.ticketName[ticketType];
         _ticketPrice = selectConcert.ticketPrice[ticketType];
-        _ticketDescription = selectConcert.ticketDescription[ticketType];
         _ticketAmount = selectConcert.ticketAmount[ticketType];
         _isTransferable = selectConcert.isTransferable[ticketType];
     }
@@ -207,7 +197,7 @@ contract Grape {
         for (var index = 0; index < selectConcert.ticketListCount; index++) {
             if (msg.sender == selectConcert.ticketList[index].owner) {
                 _concertId = concertId;
-                _ticketId = index;
+                _ticketId = index--;
                 _date = selectConcert.ticketList[index].date;
                 _price = selectConcert.ticketList[index].price;
                 _isTransfer = selectConcert.ticketList[index].isTransfer;

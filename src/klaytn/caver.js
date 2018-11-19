@@ -1,9 +1,9 @@
-import Caver from 'caver-js'
+import web3 from 'web3'
 
 export const config = {
-  rpcURL: 'http://localhost:8551'
+  rpcURL: 'ws://localhost:8552'
 }
 
-export const cav = new Caver(config.rpcURL)
+export const cav = new web3(config.rpcURL)
 
 export default cav

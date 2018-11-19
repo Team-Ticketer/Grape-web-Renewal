@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { cav } from 'klaytn/caver';
+import cav from 'klaytn/caver';
 import { connect } from 'react-redux';
 import './css/checkKlay.scss';
 
@@ -11,8 +11,8 @@ class checkKlay extends Component {
   getKlay = async () => {
     if (this.props.walletInstance !== '') {
       const address = this.props.walletInstance.address;
-      let klay = await cav.klay.getBalance(address);
-      klay = cav.utils.fromPeb(klay, 'KLAY');
+      let klay = await cav.eth.getBalance(address);
+      klay = cav.utils.fromWei(klay, 'ether');
       this.setState({klay, errmsg: ''});
     } else {
       this.setState({klay, errmsg: '아직 지갑 연동이 되지 않은 상태입니다.'});

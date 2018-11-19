@@ -22,7 +22,7 @@
     "axios": "^0.18.0",
     "babel-plugin-transform-decorators": "^6.24.1",
     "bignumber.js": "^7.2.1",
-    "caver-js": "0.0.1-b",
+    "caver-js": "0.0.1-f",
     "classnames": "^2.2.5",
     "dotenv": "^6.0.0",
     "dotenv-webpack": "^1.5.7",
@@ -45,7 +45,8 @@
     "redux-connect-decorator": "^0.2.1",
     "redux-thunk": "^2.2.0",
     "truffle-privatekey-provider": "^0.1.0",
-    "underscore": "^1.9.1"
+    "underscore": "^1.9.1",
+    "web3": "^1.0.0-beta.36"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

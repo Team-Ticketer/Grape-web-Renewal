@@ -3,7 +3,6 @@ import DateTimePicker from 'react-datetime-picker';
 import { connect } from 'react-redux';
 import { concertStartDateChange, concertEndDateChange, ticketingStartDateChange } from '../../core/redux/actions/concertAction';
 
-
 class InputConcertDate extends Component {
   render() { 
     const { concertStartDate, concertEndDate, ticketingStartDate, concertStartDateChange, concertEndDateChange, ticketingStartDateChange } = this.props;
