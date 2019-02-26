@@ -1,2 +1,4 @@
 /node_modules
 src/core/APIkey.js
+package-lock.json
+yarn.lock
